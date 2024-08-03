@@ -1,0 +1,23 @@
+FROM php:7.4-fpm
+
+# Install system dependencies and PHP extensions
+RUN apt-get update && apt-get install -y \
+    libonig-dev \
+    libxml2-dev \
+    libpng-dev \
+    mariadb-client \
+    && docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
+
+# Set working directory
+WORKDIR /var/www
+
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 775 /var/www
+
+
+# Copy the application files
+COPY www /var/www
+
+# Expose port 9000 and start php-fpm server
+EXPOSE 9000
+CMD ["php-fpm"]

@@ -21,3 +21,6 @@ ps:
 
 in:
 	docker compose exec $(d) bash
+
+logs:
+	docker compose logs

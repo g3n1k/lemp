@@ -21,21 +21,21 @@ RUN apt-get update && apt-get install -y \
 # Mysqli:
 ###########################################################################
 
-ARG INSTALL_MYSQLI=false
+# ARG INSTALL_MYSQLI=false
 
-RUN if [ ${INSTALL_MYSQLI} = true ]; then \
-    docker-php-ext-install mysqli \
-    ;fi
+# RUN if [ ${INSTALL_MYSQLI} = true ]; then \
+#     docker-php-ext-install mysqli \
+#     ;fi
 
 ###########################################################################
 # bcmath:
 ###########################################################################
 
-ARG INSTALL_BCMATH=false
+# ARG INSTALL_BCMATH=false
 
-RUN if [ ${INSTALL_BCMATH} = true ]; then \
-    docker-php-ext-install bcmath \
-    ;fi
+# RUN if [ ${INSTALL_BCMATH} = true ]; then \
+#     docker-php-ext-install bcmath \
+#     ;fi
 
 
 
@@ -49,7 +49,7 @@ RUN chown -R www-data:www-data /var/www \
 
 
 # install composer
-COPY --from=composer:2.6.5 /usr/bin/composer /usr/local/bin/composer
+# COPY --from=composer:2.6.5 /usr/bin/composer /usr/local/bin/composer
 
 COPY dev.ini /usr/local/etc/php/conf.d/
 
